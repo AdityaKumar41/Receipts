@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight, Menu, X, Moon, Sun } from "lucide-react";
@@ -12,6 +12,7 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
+import { usePathname } from "next/navigation";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,6 +33,8 @@ export function Header() {
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
     <header
@@ -40,26 +43,36 @@ export function Header() {
       }`}
     >
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex items-center gap-2 font-bold">
-            <div className="size-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground">
-              R
+        <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="flex items-center gap-2 font-bold">
+              <div className="size-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground">
+                R
+              </div>
+              <span>Recipts</span>
             </div>
-            <span>Recipts</span>
-          </div>
-        </Link>
-        <nav className="hidden md:flex gap-8">
+          </Link>
+          <nav className={`${isHome ? "hidden" : "mx-6 gap-4 md:flex"}`}>
+            <Link
+              href="/plans"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Plan
+            </Link>
+            <Link
+              href="/recipts"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Recipts
+            </Link>
+          </nav>
+        </div>
+        <nav className={`hidden gap-8 ${isHome ? "md:flex" : ""}`}>
           <Link
             href="#features"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Features
-          </Link>
-          <Link
-            href="#testimonials"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Testimonials
           </Link>
           <Link
             href="#pricing"
@@ -144,13 +157,6 @@ export function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Features
-            </Link>
-            <Link
-              href="#testimonials"
-              className="py-2 text-sm font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Testimonials
             </Link>
             <Link
               href="#pricing"
