@@ -25,15 +25,15 @@ export function HeroSection() {
             className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium"
             variant="secondary"
           >
-            Launching Soon
+            AI-Powered Receipt Management
           </Badge>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-            Elevate Your Workflow with SaaSify
+            Smart Receipt Scanning & Expense Tracking
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            The all-in-one platform that helps teams collaborate, automate, and
-            deliver exceptional results. Streamline your processes and focus on
-            what matters most.
+            Transform your receipts into actionable insights with AI.
+            Automatically scan, categorize, and analyze your expenses with
+            intelligent summaries and powerful analytics.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <SignedIn>
@@ -56,15 +56,15 @@ export function HeroSection() {
           <div className="flex items-center justify-center gap-4 mt-6 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
               <Check className="size-4 text-primary" />
-              <span>Free access</span>
+              <span>AI-powered scanning</span>
             </div>
             <div className="flex items-center gap-1">
               <Check className="size-4 text-primary" />
-              <span>No credit card</span>
+              <span>Smart categorization</span>
             </div>
             <div className="flex items-center gap-1">
               <Check className="size-4 text-primary" />
-              <span>Cancel anytime</span>
+              <span>Instant insights</span>
             </div>
           </div>
         </motion.div>

@@ -20,11 +20,11 @@ export function CtaSection() {
           className="flex flex-col items-center justify-center space-y-6 text-center"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-            Ready to Transform Your Workflow?
+            Ready to Revolutionize Your Expense Management?
           </h2>
           <p className="mx-auto max-w-[700px] text-primary-foreground/80 md:text-xl">
-            Join thousands of satisfied customers who have streamlined their
-            processes and boosted productivity with our platform.
+            Join thousands of users who are already saving time and money with
+            AI-powered receipt scanning and smart expense tracking.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-4">
             <Button
@@ -32,7 +32,7 @@ export function CtaSection() {
               variant="secondary"
               className="rounded-full h-12 px-8 text-base"
             >
-              Start Free Trial
+              Start Scanning Now
               <ArrowRight className="ml-2 size-4" />
             </Button>
             <Button
@@ -40,11 +40,11 @@ export function CtaSection() {
               variant="outline"
               className="rounded-full h-12 px-8 text-base bg-transparent border-white text-white hover:bg-white/10"
             >
-              Schedule a Demo
+              View Demo
             </Button>
           </div>
           <p className="text-sm text-primary-foreground/80 mt-4">
-            No credit card required. 14-day free trial. Cancel anytime.
+            Free to start. No credit card required. Upgrade anytime.
           </p>
         </motion.div>
       </div>

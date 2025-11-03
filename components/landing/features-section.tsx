@@ -1,46 +1,46 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap, BarChart, Users, Shield, Layers, Star } from "lucide-react";
+import { Scan, Brain, PieChart, Download, Search, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
 const features = [
   {
-    title: "Smart Automation",
+    title: "AI-Powered Scanning",
     description:
-      "Automate repetitive tasks and workflows to save time and reduce errors.",
+      "Instantly scan and digitize receipts with advanced OCR technology. Capture every detail accurately.",
+    icon: <Scan className="size-5" />,
+  },
+  {
+    title: "Smart Categorization",
+    description:
+      "Automatically categorize expenses with AI. No manual sorting needed - our AI learns your spending patterns.",
+    icon: <Brain className="size-5" />,
+  },
+  {
+    title: "Intelligent Analytics",
+    description:
+      "Get AI-generated summaries and insights about your spending. Understand where your money goes.",
+    icon: <PieChart className="size-5" />,
+  },
+  {
+    title: "Instant Export",
+    description:
+      "Export your data in multiple formats. Generate expense reports in seconds for accounting or taxes.",
+    icon: <Download className="size-5" />,
+  },
+  {
+    title: "Smart Search",
+    description:
+      "Find any receipt instantly with powerful AI search. Search by merchant, amount, date, or category.",
+    icon: <Search className="size-5" />,
+  },
+  {
+    title: "Real-time Processing",
+    description:
+      "Lightning-fast processing with cloud AI. Get results immediately, no waiting around.",
     icon: <Zap className="size-5" />,
-  },
-  {
-    title: "Advanced Analytics",
-    description:
-      "Gain valuable insights with real-time data visualization and reporting.",
-    icon: <BarChart className="size-5" />,
-  },
-  {
-    title: "Team Collaboration",
-    description:
-      "Work together seamlessly with integrated communication tools.",
-    icon: <Users className="size-5" />,
-  },
-  {
-    title: "Enterprise Security",
-    description:
-      "Keep your data safe with end-to-end encryption and compliance features.",
-    icon: <Shield className="size-5" />,
-  },
-  {
-    title: "Seamless Integration",
-    description:
-      "Connect with your favorite tools through our extensive API ecosystem.",
-    icon: <Layers className="size-5" />,
-  },
-  {
-    title: "24/7 Support",
-    description:
-      "Get help whenever you need it with our dedicated support team.",
-    icon: <Star className="size-5" />,
   },
 ];
 
@@ -61,7 +61,10 @@ const item = {
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="w-full py-20 md:py-32 flex justify-center">
+    <section
+      id="features"
+      className="w-full py-20 md:py-32 flex justify-center"
+    >
       <div className="container px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -74,15 +77,15 @@ export function FeaturesSection() {
             className="rounded-full px-4 py-1.5 text-sm font-medium"
             variant="secondary"
           >
-            Features
+            Powerful Features
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Everything You Need to Succeed
+            Everything You Need for Smart Expense Management
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-lg">
-            Our comprehensive platform provides all the tools you need to
-            streamline your workflow, boost productivity, and achieve your
-            goals.
+            From AI-powered scanning to intelligent insights, Receipt provides
+            all the tools you need to effortlessly manage receipts and track
+            expenses.
           </p>
         </motion.div>
 

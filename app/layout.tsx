@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SaaSify - Elevate Your Workflow",
+  title: "Receipt - AI-Powered Receipt Scanning & Expense Management",
   description:
-    "The all-in-one platform that helps teams collaborate, automate, and deliver exceptional results.",
+    "Transform your receipts into actionable insights with AI. Automatically scan, categorize, and analyze expenses with intelligent summaries and powerful analytics.",
   icons: {
     icon: "/convex.svg",
   },

@@ -8,13 +8,13 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2 font-bold">
               <div className="size-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground">
-                S
+                R
               </div>
-              <span>SaaSify</span>
+              <span>Receipt</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Streamline your workflow with our all-in-one SaaS platform. Boost
-              productivity and scale your business.
+              AI-powered receipt scanning and expense management. Transform your
+              receipts into actionable insights instantly.
             </p>
             <div className="flex gap-4">
               <Link

@@ -20,11 +20,11 @@ export function AnimatedHeader() {
         Pricing
       </Badge>
       <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-        Simple, Transparent Pricing
+        Choose Your Perfect Plan
       </h2>
       <p className="max-w-[800px] text-muted-foreground md:text-lg">
-        Choose the plan that&apos;s right for your business. All plans include a
-        14-day free trial.
+        Scale with your needs. Start free and upgrade as you grow. All plans
+        include AI-powered features.
       </p>
     </motion.div>
   );

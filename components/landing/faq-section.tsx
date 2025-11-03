@@ -11,41 +11,43 @@ import {
 
 const faqs = [
   {
-    question: "How does the 14-day free trial work?",
+    question: "How does AI-powered receipt scanning work?",
     answer:
-      "Our 14-day free trial gives you full access to all features of your selected plan. No credit card is required to sign up, and you can cancel at any time during the trial period with no obligation.",
+      "Our advanced OCR and AI technology instantly extracts all relevant information from your receipts including merchant name, date, amount, items, tax, and payment method. The AI learns over time to improve accuracy and automatically categorizes your expenses.",
   },
   {
-    question: "Can I change plans later?",
+    question: "What file formats are supported?",
     answer:
-      "Yes, you can upgrade or downgrade your plan at any time. If you upgrade, the new pricing will be prorated for the remainder of your billing cycle. If you downgrade, the new pricing will take effect at the start of your next billing cycle.",
+      "We support all common image formats (JPG, PNG, HEIC) and PDF files. You can upload receipts from your phone camera, scanner, or email. Our AI can process receipts of any quality, even faded or crumpled ones.",
   },
   {
-    question: "Is there a limit to how many users I can add?",
+    question: "How many receipts can I scan per month?",
     answer:
-      "The number of users depends on your plan. The Starter plan allows up to 5 team members, the Professional plan allows up to 20, and the Enterprise plan has no limit on team members.",
+      "The number of scans depends on your plan. Starter plans include 100 scans per month, Professional plans offer 500 scans, and Enterprise plans provide unlimited scanning. Unused scans don't roll over to the next month.",
   },
   {
-    question:
-      "Do you offer discounts for nonprofits or educational institutions?",
+    question: "Can I export my receipt data?",
     answer:
-      "Yes, we offer special pricing for nonprofits, educational institutions, and open-source projects. Please contact our sales team for more information.",
+      "Yes! You can export your data in multiple formats including CSV, Excel, PDF reports, and integrate with popular accounting software like QuickBooks and Xero. All plans include unlimited exports.",
   },
   {
-    question: "How secure is my data?",
+    question: "How secure is my receipt data?",
     answer:
-      "We take security very seriously. All data is encrypted both in transit and at rest. We use industry-standard security practices and regularly undergo security audits. Our platform is compliant with GDPR, CCPA, and other relevant regulations.",
+      "Your data security is our top priority. All receipts are encrypted in transit and at rest using bank-level encryption. We're GDPR and SOC 2 compliant. You can delete your data anytime, and we never share your information with third parties.",
   },
   {
-    question: "What kind of support do you offer?",
+    question: "What makes the AI summaries useful?",
     answer:
-      "Support varies by plan. All plans include email support, with the Professional plan offering priority email support. The Enterprise plan includes 24/7 phone and email support. We also have an extensive knowledge base and community forum available to all users.",
+      "Our AI analyzes your spending patterns and generates insights like top spending categories, unusual transactions, budget alerts, and monthly trends. It helps you understand where your money goes and identifies opportunities to save.",
   },
 ];
 
 export function FaqSection() {
   return (
-    <section id="faq" className="w-full py-20 md:py-32 flex justify-center items-center">
+    <section
+      id="faq"
+      className="w-full py-20 md:py-32 flex justify-center items-center"
+    >
       <div className="container px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -64,7 +66,8 @@ export function FaqSection() {
             Frequently Asked Questions
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-lg">
-            Find answers to common questions about our platform.
+            Everything you need to know about Receipt and AI-powered expense
+            management.
           </p>
         </motion.div>
 

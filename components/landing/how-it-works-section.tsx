@@ -7,21 +7,21 @@ export function HowItWorksSection() {
   const steps = [
     {
       step: "01",
-      title: "Create Account",
+      title: "Upload Receipts",
       description:
-        "Sign up in seconds with just your email. No credit card required to get started.",
+        "Simply snap a photo or upload your receipt. Our AI instantly captures all the details with precision.",
     },
     {
       step: "02",
-      title: "Configure Workspace",
+      title: "AI Processing",
       description:
-        "Customize your workspace to match your team's unique workflow and requirements.",
+        "Our advanced AI automatically extracts, categorizes, and organizes your expense data in seconds.",
     },
     {
       step: "03",
-      title: "Boost Productivity",
+      title: "Get Insights",
       description:
-        "Start using our powerful features to streamline processes and achieve your goals.",
+        "View AI-generated summaries, analytics, and reports. Make informed decisions about your spending.",
     },
   ];
 
@@ -44,11 +44,11 @@ export function HowItWorksSection() {
             How It Works
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Simple Process, Powerful Results
+            Get Started in 3 Simple Steps
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-lg">
-            Get started in minutes and see the difference our platform can make
-            for your business.
+            From upload to insights in seconds. Experience the power of
+            AI-driven receipt management.
           </p>
         </motion.div>
 

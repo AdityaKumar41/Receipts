@@ -1,37 +1,110 @@
-# Welcome to your Convex + Next.js + Clerk app
+# Receipt - AI-Powered Receipt Scanning & Expense Management
 
-This is a [Convex](https://convex.dev/) project created with [`npm create convex`](https://www.npmjs.com/package/create-convex).
+Receipt is an intelligent SaaS platform that revolutionizes how you manage receipts and track expenses. Using advanced AI and OCR technology, Receipt automatically scans, categorizes, and analyzes your receipts to provide actionable insights.
 
-After the initial setup (<2 minutes) you'll have a working full-stack app using:
+## 🚀 Features
 
-- Convex as your backend (database, server logic)
-- [React](https://react.dev/) as your frontend (web page interactivity)
-- [Next.js](https://nextjs.org/) for optimized web hosting and page routing
-- [Tailwind](https://tailwindcss.com/) for building great looking accessible UI
-- [Clerk](https://clerk.com/) for authentication
+- **AI-Powered Scanning**: Instantly digitize receipts with advanced OCR technology
+- **Smart Categorization**: Automatically categorize expenses with machine learning
+- **Intelligent Analytics**: Get AI-generated summaries and spending insights
+- **Instant Export**: Export data in multiple formats for accounting and taxes
+- **Smart Search**: Find any receipt instantly with powerful AI search
+- **Real-time Processing**: Lightning-fast cloud processing with immediate results
 
-## Get started
+## 🛠️ Tech Stack
 
-If you just cloned this codebase and didn't use `npm create convex`, run:
+This project is built with modern technologies:
 
-```
+- **[Convex](https://convex.dev/)** - Backend database and server logic
+- **[React](https://react.dev/)** & **[Next.js 15](https://nextjs.org/)** - Frontend framework with App Router
+- **[Tailwind CSS](https://tailwindcss.com/)** - Styling and UI components
+- **[Clerk](https://clerk.com/)** - Authentication and user management
+- **[Framer Motion](https://www.framer.com/motion/)** - Smooth animations
+- **[Schematic](https://schematichq.com/)** - Usage tracking and billing
+- **[dnd-kit](https://dndkit.com/)** - Drag and drop functionality
+
+## 📦 Get Started
+
+### Installation
+
+```bash
 npm install
+# or
+pnpm install
+```
+
+### Environment Setup
+
+Copy `.env.example` to `.env.local` and add your keys:
+
+```bash
+cp .env.example .env.local
+```
+
+Required environment variables:
+
+- `NEXT_PUBLIC_CONVEX_URL` - Your Convex deployment URL
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` - Clerk public key
+- `CLERK_SECRET_KEY` - Clerk secret key
+- `SCHEMATIC_API_KEY` - Schematic API key for usage tracking
+- `NEXT_PUBLIC_SCHEMATIC_CUSTOMER_ID` - Schematic customer component ID
+
+### Development
+
+Run the development server:
+
+```bash
 npm run dev
+# or
+pnpm dev
 ```
 
-If you're reading this README on GitHub and want to use this template, run:
+Open [http://localhost:3000](http://localhost:3000) to see your app.
 
-```
-npm create convex@latest -- -t nextjs-clerk
-```
+### Deployment
 
-Then:
+Deploy to Vercel with one click:
 
-1. Open your app. There should be a "Claim your application" button from Clerk in the bottom right of your app.
-2. Follow the steps to claim your application and link it to this app.
-3. Follow step 3 in the [Convex Clerk onboarding guide](https://docs.convex.dev/auth/clerk#get-started) to create a Convex JWT template.
-4. Uncomment the Clerk provider in `convex/auth.config.ts`
-5. Paste the Issuer URL as `CLERK_JWT_ISSUER_DOMAIN` to your dev deployment environment variable settings on the Convex dashboard (see [docs](https://docs.convex.dev/auth/clerk#configuring-dev-and-prod-instances))
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+## 📱 Features Overview
+
+### For Individuals
+
+- Personal expense tracking
+- Receipt organization
+- Tax preparation assistance
+- Budget monitoring
+
+### For Businesses
+
+- Team expense management
+- Automated categorization
+- Accounting software integration
+- Expense report generation
+
+## 🔒 Security
+
+- Bank-level encryption (AES-256)
+- GDPR & SOC 2 compliant
+- Secure data storage
+- Regular security audits
+
+## 📄 License
+
+MIT License - feel free to use this project for your own purposes.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+## 📞 Support
+
+Need help? Contact us at support@receipt.app or visit our [documentation](https://docs.receipt.app).
+
+---
+
+Built with ❤️ by the Receipt team 3. Follow step 3 in the [Convex Clerk onboarding guide](https://docs.convex.dev/auth/clerk#get-started) to create a Convex JWT template. 4. Uncomment the Clerk provider in `convex/auth.config.ts` 5. Paste the Issuer URL as `CLERK_JWT_ISSUER_DOMAIN` to your dev deployment environment variable settings on the Convex dashboard (see [docs](https://docs.convex.dev/auth/clerk#configuring-dev-and-prod-instances))
 
 If you want to sync Clerk user data via webhooks, check out this [example repo](https://github.com/thomasballinger/convex-clerk-users-table/).
 
