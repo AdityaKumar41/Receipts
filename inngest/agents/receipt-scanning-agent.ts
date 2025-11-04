@@ -1,59 +1,92 @@
 import { openai, createAgent, createTool } from "@inngest/agent-kit";
-import z, { ZodAny } from "zod";
+import { z } from "zod";
 
-const parsePdfTool = createTool({
+export const parsePdfTool = createTool({
   name: "parse-pdf",
   description: "Analyzes the given PDF",
   parameters: z.object({
     pdfUrl: z.string().describe("The URL of the PDF to analyze"),
   }) as any,
-  handler: async ({ pdfUrl }, { step }) => {
+  handler: async ({ pdfUrl }, ctx) => {
     try {
-      return await step?.ai.infer("parse-pdf", {
+      const step = ctx.step!;
+      // 1) Upload PDF to OpenAI Files API to obtain a file_id (download + upload within the same step)
+      const fileId = await step.run("openai-upload-file", async () => {
+        const apiKey = process.env.OPENAI_API_KEY;
+        if (!apiKey) throw new Error("Missing OPENAI_API_KEY env var");
+
+        // Download PDF
+        const res = await fetch(pdfUrl);
+        if (!res.ok) throw new Error(`Failed to fetch PDF: ${res.status}`);
+        const bytes = await res.arrayBuffer();
+
+        // Build multipart form and upload to OpenAI Files API
+        const fd = new FormData();
+        const blob = new Blob([bytes], { type: "application/pdf" });
+        fd.append("file", blob, "receipt.pdf");
+        fd.append("purpose", "assistants");
+
+        const uploadRes = await fetch("https://api.openai.com/v1/files", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: fd,
+        });
+        if (!uploadRes.ok) {
+          const errText = await uploadRes.text();
+          throw new Error(
+            `OpenAI file upload failed: ${uploadRes.status} ${errText}`,
+          );
+        }
+        const json = (await uploadRes.json()) as { id: string };
+        return json.id;
+      });
+
+      // 3) Ask OpenAI to parse the PDF using the uploaded file
+      return await step.ai.infer("parse-pdf", {
         model: openai({
-          model: "gpt-5-nano",
+          model: "gpt-4o-mini",
+          defaultParameters: {
+            max_completion_tokens: 2000,
+          },
         }) as any,
         body: {
           messages: [
             {
               role: "user",
               content: [
-                {
-                  type: "document",
-                  source: {
-                    type: "url",
-                    url: pdfUrl,
-                  },
-                },
+                { type: "file", file: { file_id: fileId } },
                 {
                   type: "text",
-                  text: `Extract the data from the receipt and return the structured output as follows: 
-                {
-                    merchant: {
-                        name: "Store Name",
-                        address: "123 Main St, City, Country",
-                        contact: "+123456789"
-                    },
-                    transaction: {
-                        date: "YYYY-MM-DD",
-                        receipt_number: "ABC123456",
-                        payment_method: "Credit Card"
-                    },
-                    items: [
-                        {
-                        name: "Item 1",
-                        quantity: 2,
-                        unit_price: 10.00,
-                        total_price: 20.00
-                        }
-                    ],
-                    totals: {
-                        subtotal: 20.00,
-                        tax: 2.00,
-                        total: 22.00,
-                        currency: "USD"
-                    }
-                }`,
+                  text: `Extract the data from the receipt and return the structured output as follows (valid JSON only):
+{
+  "merchant": {
+    "name": "Store Name",
+    "address": "123 Main St, City, Country",
+    "contact": "+123456789"
+  },
+  "transaction": {
+    "date": "YYYY-MM-DD",
+    "receipt_number": "ABC123456",
+    "payment_method": "Credit Card"
+  },
+  "items": [
+    {
+      "name": "Item 1",
+      "quantity": 2,
+      "unit_price": 10.00,
+      "total_price": 20.00
+    }
+  ],
+  "totals": {
+    "subtotal": 20.00,
+    "tax": 2.00,
+    "total": 22.00,
+    "currency": "USD"
+  }
+}
+If information is missing, infer conservatively or set empty strings/zeros.`,
                 },
               ],
             },
@@ -83,7 +116,7 @@ export const receiptScanningAgent = createAgent({
       - Maintain a structured JSON output for easy integration with databases or expense tracking systems.
   `,
   model: openai({
-    model: "gpt-5-nano",
+    model: "gpt-4o-mini",
   }),
 
   tools: [parsePdfTool],

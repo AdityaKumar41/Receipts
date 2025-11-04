@@ -115,7 +115,7 @@ export const databaseAgent = createAgent({
   system:
     "You are a helpful assistant that takes key information regarding receipts and saves it to the convex database.",
   model: openai({
-    model: "gpt-5-nano",
+    model: "gpt-4o-mini",
     defaultParameters: {
       max_completion_tokens: 1000,
     },

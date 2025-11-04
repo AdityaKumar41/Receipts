@@ -61,6 +61,35 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) to see your app.
 
+### Inngest (Background jobs) – Local Dev
+
+This project uses Inngest for background jobs and AI agent workflows.
+
+- API endpoint is exposed at `GET/POST/PUT /api/inngest` via `inngest/next`.
+- Functions are registered from `inngest/agent.ts`.
+
+To run locally with the Dev Server:
+
+```bash
+# in another terminal
+pnpm dlx inngest-cli@latest dev
+```
+
+Then visit http://localhost:8288 to view functions and runs.
+
+Optional environment variables for production:
+
+- `INNGEST_SIGNING_KEY` – required in production to sync/serve functions
+- `INNGEST_EVENT_KEY` – required in production to send events from your app
+
+Where events are sent from:
+
+- `actions/uploadPdf.ts` sends `extract_data_from_pdf_and_save_to_database` after upload
+
+Primary function:
+
+- `extract-and-save-pdf` in `inngest/agent.ts` runs an agent workflow to parse the PDF and save data.
+
 ### Deployment
 
 Deploy to Vercel with one click:
