@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
-import { Sign } from "crypto";
 
 export function HeroSection() {
   return (

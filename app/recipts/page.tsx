@@ -1,13 +1,8 @@
 import React from "react";
+import ReceiptsClient from "../../components/ReceiptsClient";
 
-function Recipts() {
-  return (
-    <div>
-      <div className="grid grid-cols-1 lg:grid-c gap-10">
-        {/* Recipts List */}
-      </div>
-    </div>
-  );
+function Receipts() {
+  return <ReceiptsClient />;
 }
 
-export default Recipts;
+export default Receipts;

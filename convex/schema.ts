@@ -9,6 +9,7 @@ export default defineSchema({
   receipts: defineTable({
     userId: v.string(),
     fileName: v.string(),
+    fileDisplayName: v.optional(v.string()),
     fileId: v.id("_storage"),
     uploadedAt: v.number(),
     size: v.number(),
@@ -20,8 +21,7 @@ export default defineSchema({
     merchantAddress: v.optional(v.string()),
     merchantContact: v.optional(v.string()),
     transactionDate: v.optional(v.string()),
-    transactionTime: v.optional(v.string()),
-    trasactionAmount: v.optional(v.number()),
+    transactionAmount: v.optional(v.number()),
     currency: v.optional(v.string()),
     receiptSummary: v.optional(v.string()),
     items: v.array(

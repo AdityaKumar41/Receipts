@@ -32,7 +32,7 @@ export const storeReceipt = mutation({
       merchantAddress: undefined,
       merchantContact: undefined,
       transactionDate: undefined,
-      trasactionAmount: undefined,
+      transactionAmount: undefined,
       currency: undefined,
       items: [],
     });
@@ -127,5 +127,48 @@ export const deleteReceipt = mutation({
     }
     await ctx.db.delete(id);
     return true;
+  },
+});
+
+export const updateReceiptWithExtractedData = mutation({
+  args: {
+    id: v.id("receipts"),
+    fileDisplayName: v.string(),
+    merchantName: v.string(),
+    merchantAddress: v.string(),
+    merchantContact: v.string(),
+    transactionDate: v.string(),
+    transactionAmount: v.number(),
+    currency: v.string(),
+    receiptSummary: v.string(),
+    items: v.array(
+      v.object({
+        name: v.string(),
+        quantity: v.number(),
+        unitPrice: v.number(),
+        totalPrice: v.number(),
+      }),
+    ),
+  },
+  handler: async (ctx, args) => {
+    const receipt = await ctx.db.get(args.id);
+    if (!receipt) {
+      throw new Error("Receipt not found");
+    }
+    await ctx.db.patch(args.id, {
+      fileName: args.fileDisplayName,
+      merchantName: args.merchantName,
+      merchantAddress: args.merchantAddress,
+      merchantContact: args.merchantContact,
+      transactionDate: args.transactionDate,
+      transactionAmount: args.transactionAmount,
+      currency: args.currency,
+      receiptSummary: args.receiptSummary,
+      items: args.items,
+      status: "completed",
+    });
+    return {
+      userId: receipt.userId,
+    };
   },
 });

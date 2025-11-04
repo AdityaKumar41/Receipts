@@ -1,12 +1,8 @@
-import PDFDropzone from "@/components/PDFDropzone";
 import React from "react";
+import DashboardClient from "../../components/DashboardClient";
 
 function Dashboard() {
-  return (
-    <div>
-      <PDFDropzone />
-    </div>
-  );
+  return <DashboardClient />;
 }
 
 export default Dashboard;
